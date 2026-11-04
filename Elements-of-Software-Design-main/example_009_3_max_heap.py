@@ -81,7 +81,16 @@ class MaxHeap:
         self.heap_list[0] = self.heap_list.pop()
         self.max_heapify(0)
         return popped
+    
+    def heapsort(self, unsorted_list):
+        self.build_max_heap(unsorted_list)
+        sorted_list = [None] * self.size
 
+        for i in range(self.size - 1, -1, -1):
+            sorted_list[i] = self.extract_max()
+
+        return sorted_list
+        
     def __str__(self):
         return str(self.heap_list)
 
@@ -110,6 +119,8 @@ def main():
     print("\nBuilding from list [4, 12, 45, 23, 11]:")
     my_heap.build_max_heap([4, 12, 45, 23, 11])
     print(my_heap)
+
+    print(heapsort([4, 12, 45, 23, 11]))
 
 
 if __name__ == '__main__':
